@@ -1,0 +1,94 @@
+@use "/src/app/shared/styles/utilities/variables";
+@use "/src/app/shared/styles/utilities/mixins";
+@use "/src/app/shared/styles/components/game";
+
+#main-container {
+  background-color: teal;
+}
+
+.player-info {
+  color: lighten(variables.$bootstrap-orange, 10);
+  text-align: center;
+}
+
+.player-info-landscape {
+  flex: 1 1 auto;
+}
+
+$menu-btn-translate-X: -100px;
+
+.menu-btn {
+  width: 160px;
+  border-radius: 0px 50px 50px 0px;
+}
+
+.home-btn {
+  transform: translateX($menu-btn-translate-X);
+}
+
+.reset-btn {
+  position: fixed;
+  z-index: variables.$zindex-fixed;
+}
+
+@function slide-animation($keyframeName) {
+  @return $keyframeName 0.25s linear both;
+}
+
+/* ------------------------------------------- Media ------------------------------------------- */
+
+@media screen and (min-width: map-get(variables.$breakpoints, xs)) {
+  .header-landscape {
+    display: none;
+  }
+
+  .player-info-portrait {
+    display: block;
+  }
+
+  .reset-btn {
+    top: 0px;
+    right: 0;
+    transition: 0s;
+    transform: rotateY(180deg) translateX($menu-btn-translate-X);
+  }
+}
+
+@media screen and (min-width: map-get(variables.$breakpoints, md)) {
+  .header-landscape {
+    display: flex;
+  }
+
+  .player-info-portrait {
+    display: none;
+  }
+
+  .reset-btn {
+    transform: translateX($menu-btn-translate-X);
+    top: 60px;
+    left: 0;
+  }
+
+  .reset-btn-slide {
+    &:hover {
+      animation: slide-animation(slide-right);
+    }
+  }
+
+  .home-btn-slide {
+    &:hover {
+      animation: slide-animation(slide-right);
+    }
+  }
+}
+
+/* ------------------------------------------- Keyframes ------------------------------------------- */
+
+@keyframes slide-right {
+  0% {
+    transform: translateX($menu-btn-translate-X);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

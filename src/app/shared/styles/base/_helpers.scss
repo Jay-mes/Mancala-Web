@@ -1,0 +1,140 @@
+// -----------------------------------------------------------------------------
+// This file contains CSS helper classes.
+// -----------------------------------------------------------------------------
+
+@use "/src/app/shared/styles/utilities/variables";
+@use "/src/app/shared/styles/utilities/mixins";
+@use "/src/app/shared/styles/components/buttons";
+
+/* Sized
+============================================= */
+
+.max-viewport {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+}
+
+.flex-center-column {
+  @include mixins.flex-container($direction: column, $justify-content: center);
+}
+
+.flex-center-row {
+  @include mixins.flex-container($direction: row, $justify-content: center);
+}
+
+/* Colors
+============================================= */
+$colours: (
+  "blue": variables.$bootstrap-blue,
+  "indigo": variables.$bootstrap-indigo,
+  "purple": variables.$bootstrap-purple,
+  "pink": variables.$bootstrap-pink,
+  "red": variables.$bootstrap-red,
+  "orange": variables.$bootstrap-orange,
+  "yellow": variables.$bootstrap-yellow,
+  "green": variables.$bootstrap-green,
+  "teal": variables.$bootstrap-teal,
+  "cyan": variables.$bootstrap-cyan,
+  "light": variables.$bootstrap-light,
+  "dark": variables.$bootstrap-dark,
+  "gray-brown": variables.$gray-brown,
+);
+
+@each $bgColor, $i in $colours {
+  .bg-#{$bgColor} {
+    background-color: $i;
+  }
+}
+
+@each $textColor, $i in $colours {
+  .text-#{$textColor} {
+    color: $i;
+  }
+}
+
+.text-gray-300 {
+  color: variables.$bootstrap-gray-300;
+}
+
+.bg-image {
+  @include mixins.bg-fill();
+}
+
+/* Rounded
+============================================= */
+$round-sizes: 15, 25, 50, 75, 100;
+@each $size in $round-sizes {
+  .rounded-#{$size} {
+    border-radius: #{$size}px;
+  }
+}
+
+/* Positions
+============================================= */
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: variables.$zindex-fixed;
+}
+
+.fixed-bottom {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: variables.$zindex-fixed;
+}
+
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: variables.$zindex-sticky;
+}
+
+/* Button
+============================================= */
+.btn-orange {
+  @include buttons.btn(
+    darken(variables.$bootstrap-orange, 5),
+    variables.$bootstrap-light,
+    darken(variables.$bootstrap-orange, 25),
+    variables.$bootstrap-light,
+    variables.$bootstrap-gray-500,
+    variables.$bootstrap-light
+  );
+}
+
+.btn-gray-brown {
+  @include buttons.btn(
+    variables.$gray-brown,
+    variables.$bootstrap-light,
+    variables.$bootstrap-orange,
+    variables.$bootstrap-light,
+    #8a9198,
+    #504a48
+  );
+}
+
+/* Text utils
+============================================= */
+.text-center {
+  text-align: center;
+}
+
+/* Others
+============================================= */
+
+.fade-in-default {
+  animation: fadeIn 2s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

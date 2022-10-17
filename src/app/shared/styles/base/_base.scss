@@ -1,0 +1,35 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+@use "/src/app/shared/styles/utilities/mixins";
+@use "/src/app/shared/styles/utilities/variables";
+
+/**
+ * Set up a decent box model on the root element
+ */
+html {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: variables.$gray-brown;
+
+  ::-moz-selection {
+    @include mixins.selection-style();
+  }
+
+  ::selection {
+    @include mixins.selection-style();
+  }
+}

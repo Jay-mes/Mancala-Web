@@ -1,0 +1,22 @@
+@use "/src/app/shared/styles/utilities/variables";
+@use "/src/app/shared/styles/utilities/mixins";
+@use "/src/app/shared/styles/utilities/functions";
+
+.stones-qty-label {
+  @extend .game-text-shadow;
+  font-size: 2rem;
+}
+
+.game-text-shadow {
+  text-shadow: 2px 2px variables.$bootstrap-gray-800;
+}
+
+.board {
+  @include mixins.bg-fill();
+  background-image: functions.image("cartoon-wood-000.jpg");
+  @extend .inset-shadow;
+}
+
+.inset-shadow {
+  box-shadow: 0px -1px 12px 9px rgba(0, 0, 0, 0.55) inset;
+}

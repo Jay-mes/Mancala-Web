@@ -1,0 +1,75 @@
+@use "/src/app/shared/styles/utilities/mixins";
+@use "/src/app/shared/styles/utilities/variables";
+@use "/src/app/shared/styles/utilities/functions";
+@use "/src/app/shared/styles/components/game";
+
+.actual-player-move {
+  box-shadow: 1px 0px 17px 9px rgba(51, 255, 0, 0.4) inset;
+}
+
+.other-player-move {
+  cursor: not-allowed;
+}
+
+.last-clicked-bin {
+  box-shadow: 1px 0px 17px 9px rgba(255, 187, 0, 0.5) inset;
+}
+
+.bin {
+  background-image: functions.image("tree-hollow-000.png");
+}
+
+.store {
+  @include mixins.bg-fill();
+  background-image: functions.image("store-001.png");
+}
+
+.stones-placeholder {
+  position: absolute;
+}
+
+.board-text {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: center;
+  color: rgba(245, 222, 179, 0.75);
+}
+
+/* ------------------------------------------- Media ------------------------------------------- */
+
+@media screen and (min-width: map-get(variables.$breakpoints, xs)) {
+  .board {
+    border-radius: 50px;
+  }
+}
+
+@media screen and (min-width: map-get(variables.$breakpoints, xs)) and (min-height: map-get(variables.$breakpoints, sm)) {
+  .board {
+    transform: rotate(90deg);
+  }
+
+  .stones-qty-label {
+    transform: rotateZ(-90deg);
+  }
+}
+
+@media screen and (min-width: map-get(variables.$breakpoints, md)) {
+  .board {
+    transform: rotate(0deg);
+  }
+
+  .stones-qty-label {
+    transform: rotateZ(0deg);
+  }
+
+  .board-text {
+    display: none;
+  }
+}
+
+@media screen and (min-width: map-get(variables.$breakpoints,xl)) {
+  .board {
+    border-radius: 100px;
+  }
+}

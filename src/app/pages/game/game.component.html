@@ -1,0 +1,13 @@
+<div id="main-container" class=" d-flex flex-column align-items-center text-light max-viewport fade-in-default">
+  <!-- ------------------------------------------- Header ------------------------------------------- -->
+  <div class="header-landscape flex-column py-5 w-100">
+    <div class="d-flex flex-row">
+      <h2 class="player-info player-info-landscape">Player A</h2>
+      <h2 class="player-info player-info-landscape">Player B</h2>
+    </div>
+  </div>
+  <!-- ------------------------------------------- Board ------------------------------------------- -->
+  <div class="d-flex h-75 align-items-center">
+    <app-board #gameBoard [gameLogic]="gameLogic" (binClick)="onBinClick($event)" [gameMode]="gameMode" [stoneTransitionTimeSec]="stoneTransitionTimeSec"></app-board>
+  </div>
+</div>
